@@ -30,7 +30,8 @@ export default class Server {
 
   private sockets() {
     this.io.on('connection', client => {
-      console.log('Socket ready');
+      SOCKET.connect(client);
+      SOCKET.user(client);
       SOCKET.disconnect(client);
       SOCKET.message(client, this.io);
     });
